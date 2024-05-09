@@ -18,7 +18,7 @@ pip install -r requirements.txt
 Execute the following command to run the server locally:
 
 ```
-./cec-server.py
+./app/server.py
 ```
 
 You may then go to http://127.0.0.1:8000 to browse the documentation and test the API.
@@ -26,7 +26,7 @@ You may then go to http://127.0.0.1:8000 to browse the documentation and test th
 The following arguments are available:
 
 ```
-./cec-server.py [-h] [-a ADDRESS] [-p PORT] [-l LOG_LEVEL]
+./app/server.py [-h] [-a ADDRESS] [-p PORT] [-l LOG_LEVEL]
 
 Optional arguments:
   -h, --help                           Show help message and exit
@@ -38,23 +38,23 @@ Optional arguments:
 A Docker image is also available for amd64 and arm64 architectures:
 
 ```
-docker run -it --rm --device /dev/aocec -p 8000:8000 ghcr.io/fcrespel/cec-server:master [-h] [-a ADDRESS] [-p PORT] [-l LOG_LEVEL]
+docker run -it --rm --device /dev/aocec -p 8000:8000 ghcr.io/fcrespel/cec-api:master [-h] [-a ADDRESS] [-p PORT] [-l LOG_LEVEL]
 ```
 
 You may want to run it in the background using commands such as the following:
 
 ```
 # Create and start container
-docker run -d --name cec-server --device /dev/aocec -p 127.0.0.1:8000:8000 ghcr.io/fcrespel/cec-server:master
+docker run -d --name cec-api --device /dev/aocec -p 127.0.0.1:8000:8000 ghcr.io/fcrespel/cec-api:master
 
 # Stop server
-docker stop cec-server
+docker stop cec-api
 
 # Start server
-docker start cec-server
+docker start cec-api
 
 # Show live logs
-docker logs -f cec-server
+docker logs -f cec-api
 ```
 
 NOTE: the API port is not secured, make sure to only expose it locally or to trusted clients.
